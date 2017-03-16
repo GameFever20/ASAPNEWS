@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_news_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="news_reader.news.asap.appforyou.asapnews.NewsList"
+    tools:showIn="@layout/app_bar_news_list">
+
+
+
+    <com.etiennelawlor.discreteslider.library.ui.DiscreteSlider
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/newsList_discreteSlider"
+        android:layout_height="48dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_gravity="bottom"
+        android:background="#00afaeae"
+        app:backdropFillColor="@color/colorPrimary"
+        app:backdropStrokeColor="@color/colorAccent"
+        app:backdropStrokeWidth="1dp"
+        app:horizontalBarThickness="4dp"
+        app:tickMarkCount="5"
+        app:tickMarkRadius="8dp"
+        app:position="0"
+        app:thumb="@mipmap/ic_launcher"
+        >
+
+
+    </com.etiennelawlor.discreteslider.library.ui.DiscreteSlider>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:id="@+id/viewPager"
+        android:layout_height="match_parent"
+        android:layout_above="@id/newsList_discreteSlider"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+
+</RelativeLayout>
