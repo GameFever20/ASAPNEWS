@@ -64,6 +64,7 @@ public class NewsList extends AppCompatActivity
     FABToolbarLayout fabToolbarLayout;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,14 +134,14 @@ public class NewsList extends AppCompatActivity
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         y = event.getY();
-                       // Toast.makeText(NewsList.this, "touch down", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(NewsList.this, "touch down", Toast.LENGTH_SHORT).show();
 
                         break;
 
                     case MotionEvent.ACTION_MOVE:
 
                         if (y - event.getY() > 200) {
-                          //  Log.i("Some", "onTouch: swipping");
+                            //  Log.i("Some", "onTouch: swipping");
                         }
                         break;
 
@@ -150,7 +151,8 @@ public class NewsList extends AppCompatActivity
 
                             openLink();
 
-                        }else{
+
+                        } else {
 
                         }
                         fabToolbarLayout.hide();
@@ -184,7 +186,7 @@ public class NewsList extends AppCompatActivity
             @Override
             public void onPageSelected(int position) {
 
-               // Toast.makeText(NewsList.this, "page selected", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(NewsList.this, "page selected", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -192,14 +194,15 @@ public class NewsList extends AppCompatActivity
             public void onPageScrollStateChanged(int state) {
                 //Toast.makeText(NewsList.this, "state = "+state, Toast.LENGTH_SHORT).show();
 
-                if(state==1){
+                if (state == 1) {
                     fab2.hide();
-                }else{
+                } else {
                     fab2.show();
                 }
 
             }
         });
+
 
 
     }
@@ -503,12 +506,11 @@ public class NewsList extends AppCompatActivity
             case R.id.one4:
 
                 Toast.makeText(this, "opening link", Toast.LENGTH_SHORT).show();
-                String url = newsArrayList.get( mPager.getCurrentItem()).getNewsURL();
+                String url = newsArrayList.get(mPager.getCurrentItem()).getNewsURL();
 
-                 new FinestWebView.Builder(this)
-                         .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
-                         .show(url);
-
+                new FinestWebView.Builder(this)
+                        .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
+                        .show(url);
 
 
                 break;
@@ -517,9 +519,9 @@ public class NewsList extends AppCompatActivity
         }
     }
 
-    public void openLink(){
+    public void openLink() {
 
-        String url = newsArrayList.get( mPager.getCurrentItem()).getNewsURL();
+        String url = newsArrayList.get(mPager.getCurrentItem()).getNewsURL();
 
         new FinestWebView.Builder(this)
                 .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
