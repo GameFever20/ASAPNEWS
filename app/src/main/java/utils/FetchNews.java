@@ -67,7 +67,7 @@ public class FetchNews {
                         // pDialog.hide();
 
 
-                        activity.fetchNewsFromSourceListner(extractJSON(response) ,topicPriority);
+                        activity.fetchNewsFromSourceListner(extractJSON(response , topicArrayList.get(topicPriority).getTopicName()) ,topicPriority);
 
                         startFetching();
 
@@ -158,6 +158,46 @@ public class FetchNews {
                 newsArticle.setNewsURL(news.getString("url"));
                 newsArticle.setNewsPublishedAt(news.getString("publishedAt"));
                 newsArticle.setNewsSource(source);
+
+                newsArraylist.add(newsArticle);
+
+            }
+
+            Log.d(TAG, "extractJSON: " + newsArraylist.size());
+
+            fetchImage(newsArraylist );
+
+            return newsArraylist;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return newsArraylist;
+
+        }
+
+
+    }
+
+    private ArrayList<NewsArticle> extractJSON(JSONObject response ,String topic) {
+
+        ArrayList<NewsArticle> newsArraylist = new ArrayList<>();
+
+        try {
+            JSONArray newsArticles = response.getJSONArray("articles");
+            String source = response.getString("source");
+
+            for ( int i = 0; i < newsArticles.length(); i++ ) {
+                JSONObject news = newsArticles.getJSONObject(i);
+                NewsArticle newsArticle = new NewsArticle();
+
+                newsArticle.setNewsTitle(news.getString("title"));
+                newsArticle.setNewsDescription(news.getString("description"));
+                newsArticle.setNewsAuthor(news.getString("author"));
+                newsArticle.setNewsImageURl(news.getString("urlToImage"));
+                newsArticle.setNewsURL(news.getString("url"));
+                newsArticle.setNewsPublishedAt(news.getString("publishedAt"));
+                newsArticle.setNewsSource(source);
+                newsArticle.setNewsTopic(topic);
 
                 newsArraylist.add(newsArticle);
 

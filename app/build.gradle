@@ -20,18 +20,25 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
     compile 'cz.msebera.android:httpclient:4.4.1.2'
     compile 'com.android.volley:volley:1.0.0'
-    compile 'com.android.support:support-v4:25.1.1'
+    compile 'com.android.support:support-v4:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:cardview-v7:25.1.1'
-
+    compile 'com.android.support:cardview-v7:25.0.1'
     compile 'com.github.lawloretienne:discreteslider:0.0.9'
+
+    compile 'com.hlab.fabrevealmenu:fab-reveal-menu:1.0.1'
+
+    compile 'com.github.fafaldo:fab-toolbar:1.2.0'
+
+    compile 'com.thefinestartist:finestwebview:1.2.7'
+
+
 
 }
