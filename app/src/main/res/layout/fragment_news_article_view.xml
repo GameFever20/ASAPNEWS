@@ -9,12 +9,35 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="12dp">
+        app:cardBackgroundColor="#DDDDDD"
+        app:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="0dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/fragment_newsArticle_publishedAt_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="PublishedAt"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </android.support.v7.widget.CardView>
+
 
             <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
@@ -34,17 +57,16 @@
                 <android.support.v7.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    app:cardBackgroundColor="@color/colorTagBg"
+                    app:cardBackgroundColor="@color/colorAccent"
+                    android:alpha="0.7"
                     app:layout_anchor="@id/fragment_newsArticle_imageView"
                     app:layout_anchorGravity="bottom|end">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="4dp"
+                        android:id="@+id/fragment_newsArticle_topic_textView"
                         android:text="Technology"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -55,6 +77,10 @@
 
             </android.support.design.widget.CoordinatorLayout>
 
+
+
+
+
             <TextView
                 android:id="@+id/fragment_newsArticle_title_textView"
                 android:layout_width="match_parent"
@@ -64,6 +90,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Title"
+                android:textStyle="bold"
+                android:fontFamily="serif"
                 android:textAlignment="center"
                 android:textColor="@color/headingColor"
                 android:textSize="20sp" />
@@ -77,36 +105,10 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Description"
+                android:textStyle="italic"
                 android:textColor="@color/descriptionColor"
                 android:textSize="16sp" />
 
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                />
-
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                app:cardBackgroundColor="@color/transparent_black_hex_dd"
-                app:cardCornerRadius="12dp"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/fragment_newsArticle_publishedAt_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="PublishedAt"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="16dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-            </android.support.v7.widget.CardView>
 
 
         </LinearLayout>

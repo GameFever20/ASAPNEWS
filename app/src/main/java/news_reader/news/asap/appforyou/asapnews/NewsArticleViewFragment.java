@@ -74,7 +74,10 @@ public class NewsArticleViewFragment extends Fragment {
         textView = (TextView) view.findViewById(R.id.fragment_newsArticle_description_textView);
         textView.setText(newsArticle.getNewsDescription());
         textView = (TextView) view.findViewById(R.id.fragment_newsArticle_publishedAt_textView);
+        textView.setText(newsArticle.getNewsSource().toUpperCase());
+        textView = (TextView) view.findViewById(R.id.fragment_newsArticle_topic_textView);
         textView.setText(newsArticle.getNewsTopic());
+
         if ( newsArticle.getNewsImage() != null ) {
             ImageView imageView = (ImageView) view.findViewById(R.id.fragment_newsArticle_imageView);
             imageView.setImageBitmap(newsArticle.getNewsImage());
