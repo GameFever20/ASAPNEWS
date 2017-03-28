@@ -82,6 +82,7 @@ public class NewsArticleViewFragment extends Fragment {
             ImageView imageView = (ImageView) view.findViewById(R.id.fragment_newsArticle_imageView);
             imageView.setImageBitmap(newsArticle.getNewsImage());
 
+
         }
 
         return view;

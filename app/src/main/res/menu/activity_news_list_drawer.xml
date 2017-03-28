@@ -3,21 +3,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import"/>
+            android:id="@+id/nav_india"
+            android:icon="@mipmap/ic_cat_india"
+            android:title="India"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery"/>
+            android:id="@+id/nav_international"
+            android:icon="@mipmap/ic_cat_international"
+            android:title="International"/>
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow"/>
+            android:id="@+id/nav_technology"
+            android:icon="@mipmap/ic_cat_tech"
+            android:title="Technology"/>
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools"/>
+            android:id="@+id/nav_science"
+            android:icon="@mipmap/ic_cat_science"
+            android:title="Science"/>
     </group>
 
     <item android:title="Communicate">
@@ -27,10 +27,22 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share"/>
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_rate_us"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send"/>
+                android:title="Rate us"/>
         </menu>
     </item>
+
+
+    <item android:title="About us">
+        <menu>
+            <item
+                android:id="@+id/nav_visit_us"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share"/>
+
+        </menu>
+    </item>
+
 
 </menu>

@@ -222,7 +222,11 @@ public class NewsList extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }else if(fabToolbarLayout.isShown()){
+            fabToolbarLayout.hide();
+        }
+
+        else {
             super.onBackPressed();
         }
     }
@@ -255,23 +259,58 @@ public class NewsList extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+       switch(id){
+           case R.id.nav_india:
+               openCategory(0,false);
+               break;
+           case R.id.nav_international:
+               openCategory(1,false);
 
-        } else if (id == R.id.nav_slideshow) {
+               break;
+           case R.id.nav_technology:
+               openCategory(2,false);
 
-        } else if (id == R.id.nav_manage) {
+               break;
+           case R.id.nav_science:
+               openCategory(3,false);
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
+               break;
+           case R.id.nav_share:
+               onShareClick();
+               break;
+           case R.id.nav_rate_us:
+               onRateUsClick();
+               break;
+           case R.id.nav_visit_us:
+               onVisitUsClick();
+               break;
+       }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void onRateUsClick() {
+        
+    }
+
+    private void onVisitUsClick() {
+
+    }
+
+    private void onShareClick() {
+    }
+
+    private void openCategory(int i, boolean isFabLayoutAction) {
+        if (mPager != null) {
+            mPager.setCurrentItem(topicArrayList.get(i).getTopicStartIndex());
+
+            setTopicText(topicArrayList.get(i).getTopicName());
+            if(isFabLayoutAction) {
+                fabToolbarLayout.hide();
+            }
+        }
     }
 
     public void fetchToiNewsListner(ArrayList<NewsArticle> newsArraylist) {
@@ -482,33 +521,20 @@ public class NewsList extends AppCompatActivity
     public void categoryOneSelected(View view) {
         switch (view.getId()) {
             case R.id.one:
-                mPager.setCurrentItem(topicArrayList.get(0).getTopicStartIndex());
+                openCategory(0,true);
 
-                setTopicText(topicArrayList.get(0).getTopicName());
-                fabToolbarLayout.hide();
                 break;
             case R.id.one2:
-                mPager.setCurrentItem(topicArrayList.get(1).getTopicStartIndex());
-
-                setTopicText(topicArrayList.get(1).getTopicName());
-                fabToolbarLayout.hide();
+                openCategory(1,true);
 
 
                 break;
             case R.id.one3:
-                mPager.setCurrentItem(topicArrayList.get(2).getTopicStartIndex());
-
-                setTopicText(topicArrayList.get(2).getTopicName());
-                fabToolbarLayout.hide();
-
+                openCategory(2,true);
                 break;
             case R.id.one4:
 
-                Toast.makeText(this, "opening link", Toast.LENGTH_SHORT).show();
-                String url = newsArrayList.get(mPager.getCurrentItem()).getNewsURL();
-
-                openLink();
-
+                openCategory(3,true);
                 break;
 
 
