@@ -52,7 +52,7 @@ import utils.TopicListDataBase;
 import utils.ZoomOutPageTransformer;
 
 public class NewsList extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GestureDetector.OnGestureListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
 
     private ViewPager mPager;
@@ -70,16 +70,33 @@ public class NewsList extends AppCompatActivity
     FABToolbarLayout fabToolbarLayout;
 
     ImageView splashScreen;
-     FloatingActionButton fab2;
+    FloatingActionButton fab2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_list);
+        // setContentView(R.layout.activity_news_list);
+        setContentView(R.layout.splashscreen_layout);
 
-        splashScreen= (ImageView)findViewById(R.id.splashScreen_View);
-        splashScreen.setVisibility(View.VISIBLE);
+
+        initializeTopicList();
+        new FetchNews(this, topicArrayList).startFetching();
+
+
+    }
+
+
+
+    private void initializeTopicList() {
+
+        topicArrayList = new TopicListDataBase(this).getTopicList();
+
+
+    }
+
+    public void initializeActivity(){
+        setContentView(R.layout.activity_news_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -107,29 +124,12 @@ public class NewsList extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        initializeTopicList();
-        new FetchNews(this, topicArrayList).startFetching();
-        Log.d("app", "onCreate: after request");
 
 
-        topicText = (TextView) findViewById(R.id.newsList_topic_textView);
-        setTopicText(topicArrayList.get(0).getTopicName());
 
 
-        /*discreteSlider = (DiscreteSlider) findViewById(R.id.newsList_discreteSlider);
-        discreteSlider.setTickMarkCount(3);
-        discreteSlider.setOnDiscreteSliderChangeListener(new DiscreteSlider.OnDiscreteSliderChangeListener() {
-            @Override
-            public void onPositionChanged(int position) {
 
-                mPager.setCurrentItem(topicArrayList.get(position).getTopicStartIndex());
-
-                setTopicText(topicArrayList.get(position).getTopicName());
-
-            }
-        });
-*/
-        gestureDetector = new GestureDetector(NewsList.this, NewsList.this);
+        //gestureDetector = new GestureDetector(NewsList.this, NewsList.this);
         relativeLayout = (RelativeLayout) findViewById(R.id.content_news_list);
         mPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -176,7 +176,7 @@ public class NewsList extends AppCompatActivity
         });
 
         fabToolbarLayout = (FABToolbarLayout) findViewById(R.id.fabtoolbar);
-         fab2 = (FloatingActionButton) findViewById(R.id.fabtoolbar_fab);
+        fab2 = (FloatingActionButton) findViewById(R.id.fabtoolbar_fab);
 
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,16 +216,6 @@ public class NewsList extends AppCompatActivity
         });
 
 
-    }
-
-    private void setTopicText(String topicName) {
-        topicText.setText(topicName);
-    }
-
-    private void initializeTopicList() {
-
-        topicArrayList = new TopicListDataBase(this).getTopicList();
-
 
     }
 
@@ -234,8 +224,7 @@ public class NewsList extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -268,32 +257,32 @@ public class NewsList extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-       switch(id){
-           case R.id.nav_india:
-               openCategory(0,false);
-               break;
-           case R.id.nav_international:
-               openCategory(1,false);
+        switch (id) {
+            case R.id.nav_india:
+                openCategory(0, false);
+                break;
+            case R.id.nav_international:
+                openCategory(1, false);
 
-               break;
-           case R.id.nav_technology:
-               openCategory(2,false);
+                break;
+            case R.id.nav_technology:
+                openCategory(2, false);
 
-               break;
-           case R.id.nav_science:
-               openCategory(3,false);
+                break;
+            case R.id.nav_science:
+                openCategory(3, false);
 
-               break;
-           case R.id.nav_share:
-               onShareClick();
-               break;
-           case R.id.nav_rate_us:
-               onRateUsClick();
-               break;
-           case R.id.nav_visit_us:
-               onVisitUsClick();
-               break;
-       }
+                break;
+            case R.id.nav_share:
+                onShareClick();
+                break;
+            case R.id.nav_rate_us:
+                onRateUsClick();
+                break;
+            case R.id.nav_visit_us:
+                onVisitUsClick();
+                break;
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -303,17 +292,18 @@ public class NewsList extends AppCompatActivity
     private void onRateUsClick() {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=news_reader.news.asap.appforyou.asapnews")));
-        }catch(Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void onVisitUsClick() {
-        new FinestWebView.Builder(this)
-                .toolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
-                .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
-                .statusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
-                .show("https://appforyou.wixsite.com/android");
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://appforyou.wixsite.com/android")));
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -321,11 +311,10 @@ public class NewsList extends AppCompatActivity
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
 
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, " Download ASAP News - Light, Fast and Reliable \n Getnews from trusted source ");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=news_reader.news.asap.appforyou.asapnews");
-        sharingIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "ASAP News");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, " Download ASAP News - Light, Fast and Reliable \n" +
+                "https://play.google.com/store/apps/details?id=news_reader.news.asap.appforyou.asapnews" +
+                "\n Get news from trusted source ");
         sharingIntent.putExtra(Intent.EXTRA_TITLE, "ASAP News1");
-
 
 
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
@@ -335,8 +324,7 @@ public class NewsList extends AppCompatActivity
         if (mPager != null) {
             mPager.setCurrentItem(topicArrayList.get(i).getTopicStartIndex());
 
-            setTopicText(topicArrayList.get(i).getTopicName());
-            if(isFabLayoutAction) {
+            if (isFabLayoutAction) {
                 fabToolbarLayout.hide();
             }
         }
@@ -368,13 +356,15 @@ public class NewsList extends AppCompatActivity
         newsArrayList.get(j).setNewsImage(Bitmap.createScaledBitmap(newsArrayList.get(j)
                 .getNewsImage(), p, q, true));
 */
-        if (mPager.getCurrentItem() == j) {
+        if(mPager!=null) {
+            if (mPager.getCurrentItem() == j) {
 
 
-            mPager.setAdapter(mPagerAdapter);
+                mPager.setAdapter(mPagerAdapter);
 
-            mPager.setCurrentItem(j);
+                mPager.setCurrentItem(j);
 
+            }
         }
 
     }
@@ -393,9 +383,8 @@ public class NewsList extends AppCompatActivity
         if (topicPriority == 0) {
             this.newsArrayList = newsArticles;
             //NUM_PAGES = this.newsArrayList.size();
-
+            initializeActivity();
             initializeViewPager();
-            closeSplashScreen();
 
 
         } else {
@@ -408,6 +397,8 @@ public class NewsList extends AppCompatActivity
             mPagerAdapter.notifyDataSetChanged();
         }
 
+
+
     }
 
     private void initializeViewPager() {
@@ -419,117 +410,15 @@ public class NewsList extends AppCompatActivity
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
 
-        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-                if (position == 0 || position == topicArrayList.get(0).getTopicStartIndex() - 1) {
-                    setTopicText(topicArrayList.get(0).getTopicName());
-                } else if (position == topicArrayList.get(1).getTopicStartIndex() || position ==
-                        topicArrayList.get(2).getTopicStartIndex() - 1) {
-                    setTopicText(topicArrayList.get(1).getTopicName());
-                } else if (position == topicArrayList.get(2).getTopicStartIndex() || position ==
-                        topicArrayList.get(3).getTopicStartIndex() - 1) {
-                    setTopicText(topicArrayList.get(2).getTopicName());
-                }
-
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
 
     }
 
-    @Override
-    public boolean onFling(MotionEvent motionEvent1, MotionEvent motionEvent2, float X, float Y) {
 
-        if (motionEvent1.getY() - motionEvent2.getY() > 50) {
 
-            Toast.makeText(NewsList.this, " Swipe Up ", Toast.LENGTH_LONG).show();
 
-            return true;
-        }
 
-        if (motionEvent2.getY() - motionEvent1.getY() > 50) {
-
-            Toast.makeText(NewsList.this, " Swipe Down ", Toast.LENGTH_LONG).show();
-
-            return true;
-        }
-
-        if (motionEvent1.getX() - motionEvent2.getX() > 50) {
-
-            Toast.makeText(NewsList.this, " Swipe Left ", Toast.LENGTH_LONG).show();
-
-            return true;
-        }
-
-        if (motionEvent2.getX() - motionEvent1.getX() > 50) {
-
-            Toast.makeText(NewsList.this, " Swipe Right ", Toast.LENGTH_LONG).show();
-
-            return true;
-        } else {
-
-            return true;
-        }
-    }
-
-    @Override
-    public void onLongPress(MotionEvent arg0) {
-
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent arg0, MotionEvent arg1, float arg2, float arg3) {
-
-        // TODO Auto-generated method stub
-
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent arg0) {
-
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent arg0) {
-
-        // TODO Auto-generated method stub
-
-        return false;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-
-        // TODO Auto-generated method stub
-
-        return gestureDetector.onTouchEvent(motionEvent);
-    }
-
-    @Override
-    public boolean onDown(MotionEvent arg0) {
-
-        // TODO Auto-generated method stub
-
-        return false;
-    }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
@@ -551,20 +440,20 @@ public class NewsList extends AppCompatActivity
     public void categoryOneSelected(View view) {
         switch (view.getId()) {
             case R.id.one:
-                openCategory(0,true);
+                openCategory(0, true);
 
                 break;
             case R.id.one2:
-                openCategory(1,true);
+                openCategory(1, true);
 
 
                 break;
             case R.id.one3:
-                openCategory(2,true);
+                openCategory(2, true);
                 break;
             case R.id.one4:
 
-                openCategory(3,true);
+                openCategory(3, true);
                 break;
 
 
@@ -585,46 +474,7 @@ public class NewsList extends AppCompatActivity
     }
 
 
-    public void closeSplashScreen(){
-
-
-        int x= (int)fab2 .getScaleX();
-        int y= (int)fab2 .getY();
-        Toast.makeText(this, " X and y is "+x+""+y, Toast.LENGTH_SHORT).show();
-
-        float radius=Math.max(splashScreen.getWidth(),splashScreen.getHeight()) ;
-
-        Animator reveal= ViewAnimationUtils.createCircularReveal(splashScreen,x,y,radius,fab2.getHeight());
-        reveal.setInterpolator(new AccelerateDecelerateInterpolator());
-        reveal.setDuration(600);
-
-        reveal.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                splashScreen.setVisibility(View.INVISIBLE);
-
-
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {
-
-            }
-        });
-
-        reveal.start();
-
-
+    public void closeSplashScreen() {
     }
 
 }

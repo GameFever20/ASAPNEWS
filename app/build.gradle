@@ -39,5 +39,8 @@ dependencies {
 
     compile 'com.thefinestartist:finestwebview:1.2.7'
 
+    compile 'com.google.firebase:firebase-crash:10.2.0'
+
 
 }
+apply plugin: 'com.google.gms.google-services'
