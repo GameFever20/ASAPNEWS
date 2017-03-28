@@ -292,7 +292,7 @@ public class NewsList extends AppCompatActivity
     }
 
     private void onRateUsClick() {
-        
+
     }
 
     private void onVisitUsClick() {
