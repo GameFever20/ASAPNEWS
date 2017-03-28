@@ -122,7 +122,9 @@
                 android:layout_weight="1"
                 android:scaleType="centerInside"
                 android:onClick="categoryOneSelected"
-                android:src="@drawable/ic_menu_send" />
+                android:src="@mipmap/ic_cat_india"
+
+                />
 
             <ImageView
                 android:id="@+id/one2"
@@ -132,7 +134,8 @@
                 android:scaleType="centerInside"
                 android:onClick="categoryOneSelected"
 
-                android:src="@drawable/ic_menu_send" />
+                android:src="@mipmap/ic_cat_international"
+                />
 
 
             <ImageView
@@ -143,7 +146,7 @@
                 android:scaleType="centerInside"
                 android:onClick="categoryOneSelected"
 
-                android:src="@drawable/ic_menu_send" />
+                android:src="@mipmap/ic_cat_tech" />
 
             <ImageView
                 android:id="@+id/one4"
@@ -153,7 +156,7 @@
                 android:scaleType="centerInside"
                 android:onClick="categoryOneSelected"
 
-                android:src="@drawable/ic_menu_send" />
+                android:src="@mipmap/ic_cat_science" />
 
 
         </LinearLayout>

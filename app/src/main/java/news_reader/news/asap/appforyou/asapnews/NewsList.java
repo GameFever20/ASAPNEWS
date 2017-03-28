@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
@@ -62,7 +63,6 @@ public class NewsList extends AppCompatActivity
     CardView categoryChooser;
     FABRevealMenu fabRevealMenu;
     FABToolbarLayout fabToolbarLayout;
-
 
 
     @Override
@@ -202,7 +202,6 @@ public class NewsList extends AppCompatActivity
 
             }
         });
-
 
 
     }
@@ -508,10 +507,7 @@ public class NewsList extends AppCompatActivity
                 Toast.makeText(this, "opening link", Toast.LENGTH_SHORT).show();
                 String url = newsArrayList.get(mPager.getCurrentItem()).getNewsURL();
 
-                new FinestWebView.Builder(this)
-                        .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
-                        .show(url);
-
+                openLink();
 
                 break;
 
@@ -524,7 +520,9 @@ public class NewsList extends AppCompatActivity
         String url = newsArrayList.get(mPager.getCurrentItem()).getNewsURL();
 
         new FinestWebView.Builder(this)
+                .toolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
                 .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
+                .statusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
                 .show(url);
 
 
