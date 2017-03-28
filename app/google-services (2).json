@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "900719853589",
+    "firebase_url": "https://asap-news.firebaseio.com",
+    "project_id": "asap-news",
+    "storage_bucket": "asap-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900719853589:android:275ce5f1ea2cbf0c",
+        "android_client_info": {
+          "package_name": "news_reader.news.asap.appforyou.asapnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900719853589-443jh0pi4s8d8oofo0fdosp9daq9n87e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnB0XNUhQYwtQZwUhQW6kgOfpUxQZf1dY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

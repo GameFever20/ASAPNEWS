@@ -1,7 +1,9 @@
 package news_reader.news.asap.appforyou.asapnews;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.graphics.Path;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,7 +30,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,11 +69,18 @@ public class NewsList extends AppCompatActivity
     FABRevealMenu fabRevealMenu;
     FABToolbarLayout fabToolbarLayout;
 
+    ImageView splashScreen;
+     FloatingActionButton fab2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
+
+        splashScreen= (ImageView)findViewById(R.id.splashScreen_View);
+        splashScreen.setVisibility(View.VISIBLE);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -164,7 +176,7 @@ public class NewsList extends AppCompatActivity
         });
 
         fabToolbarLayout = (FABToolbarLayout) findViewById(R.id.fabtoolbar);
-        final FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fabtoolbar_fab);
+         fab2 = (FloatingActionButton) findViewById(R.id.fabtoolbar_fab);
 
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,10 +234,7 @@ public class NewsList extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(fabToolbarLayout.isShown()){
-            fabToolbarLayout.hide();
         }
-
         else {
             super.onBackPressed();
         }
@@ -292,14 +301,34 @@ public class NewsList extends AppCompatActivity
     }
 
     private void onRateUsClick() {
-
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=news_reader.news.asap.appforyou.asapnews")));
+        }catch(Exception e){
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void onVisitUsClick() {
+        new FinestWebView.Builder(this)
+                .toolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
+                .setCustomAnimations(R.anim.slide_up, R.anim.hold, R.anim.hold, R.anim.slide_down)
+                .statusBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
+                .show("https://appforyou.wixsite.com/android");
 
     }
 
     private void onShareClick() {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, " Download ASAP News - Light, Fast and Reliable \n Getnews from trusted source ");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=news_reader.news.asap.appforyou.asapnews");
+        sharingIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "ASAP News");
+        sharingIntent.putExtra(Intent.EXTRA_TITLE, "ASAP News1");
+
+
+
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 
     private void openCategory(int i, boolean isFabLayoutAction) {
@@ -366,6 +395,7 @@ public class NewsList extends AppCompatActivity
             //NUM_PAGES = this.newsArrayList.size();
 
             initializeViewPager();
+            closeSplashScreen();
 
 
         } else {
@@ -554,5 +584,47 @@ public class NewsList extends AppCompatActivity
 
     }
 
+
+    public void closeSplashScreen(){
+
+
+        int x= (int)fab2 .getScaleX();
+        int y= (int)fab2 .getY();
+        Toast.makeText(this, " X and y is "+x+""+y, Toast.LENGTH_SHORT).show();
+
+        float radius=Math.max(splashScreen.getWidth(),splashScreen.getHeight()) ;
+
+        Animator reveal= ViewAnimationUtils.createCircularReveal(splashScreen,x,y,radius,fab2.getHeight());
+        reveal.setInterpolator(new AccelerateDecelerateInterpolator());
+        reveal.setDuration(600);
+
+        reveal.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                splashScreen.setVisibility(View.INVISIBLE);
+
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
+        reveal.start();
+
+
+    }
 
 }
