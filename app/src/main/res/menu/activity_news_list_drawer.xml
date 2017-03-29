@@ -34,12 +34,12 @@
                 android:title="Share"/>
             <item
                 android:id="@+id/nav_rate_us"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_action_rate_us"
                 android:title="Rate us"/>
 
             <item
                 android:id="@+id/nav_suggestion"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_action_suggestion"
                 android:title="Suggestion"/>
 
 
@@ -51,7 +51,7 @@
         <menu>
             <item
                 android:id="@+id/nav_visit_us"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_action_about_us"
                 android:title="Visit us"/>
 
         </menu>

@@ -44,7 +44,7 @@ public class TopicListDataBase {
         Topic topic2= new Topic();
         topic2.setTopicName("International");
         topic2.setTopicPriority(1);
-        topic2.setTopicSource("bloomberg");
+        topic2.setTopicSource("Bloomberg");
         topic2.setTopicStatus(true);
         topicArrayList.add(topic2);
 
