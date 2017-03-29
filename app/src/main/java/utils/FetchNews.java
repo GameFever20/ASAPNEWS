@@ -36,11 +36,17 @@ public class FetchNews {
     }
 
     public void startFetching() {
-       if( topicArrayList.get(currentFetchingItem).isTopicStatus()){
-           fetchnewsFromSource(topicArrayList.get(currentFetchingItem).getTopicSource() ,
-                   currentFetchingItem);
-           currentFetchingItem++;
-       }
+
+
+           if (topicArrayList.size() >currentFetchingItem) {
+               fetchnewsFromSource(topicArrayList.get(currentFetchingItem).getTopicSource() ,
+                       currentFetchingItem);
+               currentFetchingItem++;
+
+           }else{
+
+           }
+
 
     }
 

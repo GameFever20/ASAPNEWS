@@ -32,74 +32,44 @@ public class TopicListDataBase {
     public ArrayList<Topic> getTopicList(){
 
         ArrayList<Topic> topicArrayList =new ArrayList<>();
-        for ( int i=0 ;i<10 ;i++) {
-            topicArrayList.add(new Topic());
-        }
 
-        int topicLimit = 3;
+        Topic topic= new Topic();
+        topic.setTopicName("India");
+        topic.setTopicPriority(0);
+        topic.setTopicSource("the-times-of-india");
+        topic.setTopicStatus(true);
 
-        /*pref.getInt("topiclimit",5);*/
-        int emptyTopiccell =topicLimit;
+        topicArrayList.add(topic);
 
-        int priority = 0;
-        /*
-                pref.getInt("India",0);
-        */
-        if ( priority <=topicLimit ) {
-            Topic topic= topicArrayList.get(priority);
-            topic.setTopicName("India");
-            topic.setTopicPriority(priority);
-            topic.setTopicSource("the-times-of-india");
-            topic.setTopicStatus(true);
-        }else{
-            Topic topic= topicArrayList.get(emptyTopiccell);
-            topic.setTopicName("India");
-            topic.setTopicPriority(priority);
-            topic.setTopicSource("the-times-of-india");
-            topic.setTopicStatus(false);
-            emptyTopiccell++;
+        Topic topic2= new Topic();
+        topic2.setTopicName("International");
+        topic2.setTopicPriority(1);
+        topic2.setTopicSource("bloomberg");
+        topic2.setTopicStatus(true);
+        topicArrayList.add(topic2);
 
-        }
+        Topic topic3= new Topic();
+        topic3.setTopicName("Technology");
+        topic3.setTopicPriority(2);
+        topic3.setTopicSource("the-verge");
+        topic3.setTopicStatus(true);
+        topicArrayList.add(topic3);
 
-        priority =1;
-        /*
-        pref.getInt("Technology",1);
-        */
-        if ( priority <=topicLimit ) {
-            Topic topic= topicArrayList.get(priority);
-            topic.setTopicName("Technology");
-            topic.setTopicPriority(priority);
-            topic.setTopicSource("the-verge");
-            topic.setTopicStatus(true);
-        }else{
-            Topic topic= topicArrayList.get(emptyTopiccell);
-            topic.setTopicName("Technology");
-            topic.setTopicPriority(priority);
-            topic.setTopicSource("the-verge");
-            topic.setTopicStatus(false);
-            emptyTopiccell++;
+        Topic topic4= new Topic();
+        topic4.setTopicName("Science");
+        topic4.setTopicPriority(3);
+        topic4.setTopicSource("new-scientist");
+        topic4.setTopicStatus(true);
+        topicArrayList.add(topic4);
 
-        }
+        Topic topic5= new Topic();
+        topic5.setTopicName("Cricket");
+        topic5.setTopicPriority(4);
+        topic5.setTopicSource("espn-cric-info");
+        topic5.setTopicStatus(true);
+        topicArrayList.add(topic5);
 
-        priority =2;
-        /*
-        pref.getInt("Science",2);
-        */
-        if ( priority <=topicLimit ) {
-            Topic topic= topicArrayList.get(priority);
-            topic.setTopicName("Science");
-            topic.setTopicPriority(priority);
-            topic.setTopicSource("new-scientist");
-            topic.setTopicStatus(true);
-        }else{
-            Topic topic= topicArrayList.get(emptyTopiccell);
-            topic.setTopicName("Science");
-            topic.setTopicPriority(priority);
-            topic.setTopicSource("new-Scientist");
-            topic.setTopicStatus(false);
-            emptyTopiccell++;
 
-        }
 
 
         return topicArrayList;

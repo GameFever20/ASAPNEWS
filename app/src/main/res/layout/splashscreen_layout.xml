@@ -3,10 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
+    tools:context="news_reader.news.asap.appforyou.asapnews.NewsList"
     android:orientation="vertical">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/splashScreen_imageView"
@@ -49,6 +53,8 @@
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textStyle="bold" />
+
+</RelativeLayout>
 
 
 </RelativeLayout>
