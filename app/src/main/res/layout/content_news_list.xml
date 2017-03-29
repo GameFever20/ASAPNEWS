@@ -256,7 +256,7 @@
                     android:layout_weight="1"
                     android:onClick="categoryOneSelected"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/ic_cat_science" />
+                    android:src="@mipmap/ic_action_cricket" />
 
                 <TextView
                     android:layout_width="match_parent"

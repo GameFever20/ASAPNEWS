@@ -340,6 +340,14 @@ public class NewsList extends AppCompatActivity
         if (mPager != null) {
             mPager.setCurrentItem(topicArrayList.get(i).getTopicStartIndex());
 
+            if(i == 0){
+
+            }else{
+                if (topicArrayList.get(i).getTopicStartIndex() ==0){
+                    Toast.makeText(this, "Loading ...   Please wait", Toast.LENGTH_SHORT).show();
+                }
+            }
+
             if (isFabLayoutAction) {
                 fabToolbarLayout.hide();
             }

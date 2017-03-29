@@ -21,7 +21,7 @@
 
         <item
             android:id="@+id/nav_cricket"
-            android:icon="@mipmap/ic_cat_science"
+            android:icon="@mipmap/ic_action_cricket"
             android:title="Cricket"/>
 
     </group>
@@ -53,6 +53,7 @@
                 android:id="@+id/nav_visit_us"
                 android:icon="@drawable/ic_action_about_us"
                 android:title="Visit us"/>
+
 
         </menu>
     </item>
