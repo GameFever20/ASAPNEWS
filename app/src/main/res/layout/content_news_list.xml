@@ -20,12 +20,12 @@
         android:background="#00afaeae"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
+        android:visibility="gone"
         app:backdropFillColor="@color/colorPrimary"
         app:backdropStrokeColor="@color/colorAccent"
         app:backdropStrokeWidth="1dp"
         app:horizontalBarThickness="4dp"
         app:position="0"
-        android:visibility="gone"
         app:thumb="@mipmap/ic_launcher"
         app:tickMarkCount="5"
         app:tickMarkRadius="8dp">
@@ -86,8 +86,7 @@
         app:hideDuration="200"
         app:horizontalMargin="30dp"
         app:showDuration="600"
-        app:verticalMargin="30dp"
->
+        app:verticalMargin="30dp">
 
         <RelativeLayout
             android:id="@+id/fabtoolbar_container"
@@ -95,15 +94,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="0dp"
-            >
+            android:layout_marginBottom="0dp">
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabtoolbar_fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fabSize="normal"
-                android:src="@mipmap/ic_navigation"/>
+                android:src="@mipmap/ic_navigation"
+                app:fabSize="normal" />
 
         </RelativeLayout>
 
@@ -115,49 +113,162 @@
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/one"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:onClick="categoryOneSelected"
-                android:src="@mipmap/ic_cat_india"
+                android:orientation="vertical">
 
-                />
+                <ImageView
+                    android:id="@+id/one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
 
-            <ImageView
-                android:id="@+id/one2"
+                    android:onClick="categoryOneSelected"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_cat_india"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="India"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:onClick="categoryOneSelected"
+                android:orientation="vertical">
 
 
-                android:src="@mipmap/ic_cat_international"
-                />
+                <ImageView
+                    android:id="@+id/one2"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="categoryOneSelected"
+                    android:scaleType="centerInside"
 
 
-            <ImageView
-                android:id="@+id/one3"
+                    android:src="@mipmap/ic_cat_international" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="International"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:onClick="categoryOneSelected"
+                android:orientation="vertical">
 
-                android:src="@mipmap/ic_cat_tech" />
+                <ImageView
+                    android:id="@+id/one3"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
 
-            <ImageView
-                android:id="@+id/one4"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="categoryOneSelected"
+                    android:scaleType="centerInside"
+
+                    android:src="@mipmap/ic_cat_tech" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tech"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:onClick="categoryOneSelected"
+                android:orientation="vertical">
 
-                android:src="@mipmap/ic_cat_science" />
+                <ImageView
+                    android:id="@+id/one4"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="categoryOneSelected"
+                    android:scaleType="centerInside"
+
+                    android:src="@mipmap/ic_cat_science" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Science"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/one5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:onClick="categoryOneSelected"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_cat_science" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cricket"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+
+                    />
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -168,12 +279,11 @@
 
     <!--Splash screen view-->
 
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:visibility="gone"
-    android:id="@+id/splashScreen_View"
-    />
+    <ImageView
+        android:id="@+id/splashScreen_View"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:visibility="gone" />
 
 </RelativeLayout>

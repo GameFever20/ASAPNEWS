@@ -18,6 +18,12 @@
             android:id="@+id/nav_science"
             android:icon="@mipmap/ic_cat_science"
             android:title="Science"/>
+
+        <item
+            android:id="@+id/nav_cricket"
+            android:icon="@mipmap/ic_cat_science"
+            android:title="Cricket"/>
+
     </group>
 
     <item android:title="Communicate">
@@ -30,6 +36,13 @@
                 android:id="@+id/nav_rate_us"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Rate us"/>
+
+            <item
+                android:id="@+id/nav_suggestion"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Suggestion"/>
+
+
         </menu>
     </item>
 

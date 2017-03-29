@@ -52,7 +52,7 @@ import utils.TopicListDataBase;
 import utils.ZoomOutPageTransformer;
 
 public class NewsList extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private ViewPager mPager;
@@ -87,7 +87,6 @@ public class NewsList extends AppCompatActivity
     }
 
 
-
     private void initializeTopicList() {
 
         topicArrayList = new TopicListDataBase(this).getTopicList();
@@ -95,7 +94,7 @@ public class NewsList extends AppCompatActivity
 
     }
 
-    public void initializeActivity(){
+    public void initializeActivity() {
         setContentView(R.layout.activity_news_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -122,11 +121,6 @@ public class NewsList extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
-
 
 
         //gestureDetector = new GestureDetector(NewsList.this, NewsList.this);
@@ -216,7 +210,6 @@ public class NewsList extends AppCompatActivity
         });
 
 
-
     }
 
     @Override
@@ -273,6 +266,11 @@ public class NewsList extends AppCompatActivity
                 openCategory(3, false);
 
                 break;
+            case R.id.nav_cricket:
+                openCategory(4, false);
+
+                break;
+
             case R.id.nav_share:
                 onShareClick();
                 break;
@@ -282,12 +280,30 @@ public class NewsList extends AppCompatActivity
             case R.id.nav_visit_us:
                 onVisitUsClick();
                 break;
+            case R.id.nav_suggestion:
+                sendEmailToAppForYou();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void sendEmailToAppForYou() {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"appforyou@yahoo.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Suggestion for ASAP News App");
+        intent.putExtra(Intent.EXTRA_TEXT, "Your suggestion here for News app \n");
+
+        intent.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(intent, "Select Email App"));
+
+    }
+
 
     private void onRateUsClick() {
         try {
@@ -356,7 +372,7 @@ public class NewsList extends AppCompatActivity
         newsArrayList.get(j).setNewsImage(Bitmap.createScaledBitmap(newsArrayList.get(j)
                 .getNewsImage(), p, q, true));
 */
-        if(mPager!=null) {
+        if (mPager != null) {
             if (mPager.getCurrentItem() == j) {
 
 
@@ -398,7 +414,6 @@ public class NewsList extends AppCompatActivity
         }
 
 
-
     }
 
     private void initializeViewPager() {
@@ -410,14 +425,7 @@ public class NewsList extends AppCompatActivity
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
 
-
-
-
     }
-
-
-
-
 
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -454,6 +462,10 @@ public class NewsList extends AppCompatActivity
             case R.id.one4:
 
                 openCategory(3, true);
+                break;
+            case R.id.one5:
+
+                openCategory(4, true);
                 break;
 
 
