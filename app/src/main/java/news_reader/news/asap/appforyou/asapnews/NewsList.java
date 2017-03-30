@@ -214,11 +214,15 @@ public class NewsList extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        try {
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                super.onBackPressed();
+            }
+        }catch(Exception e){
+            
         }
     }
 
@@ -380,15 +384,19 @@ public class NewsList extends AppCompatActivity
         newsArrayList.get(j).setNewsImage(Bitmap.createScaledBitmap(newsArrayList.get(j)
                 .getNewsImage(), p, q, true));
 */
-        if (mPager != null) {
-            if (mPager.getCurrentItem() == j) {
+        try {
+            if (mPager != null) {
+                if (mPager.getCurrentItem() == j) {
 
 
-                mPager.setAdapter(mPagerAdapter);
+                    mPager.setAdapter(mPagerAdapter);
 
-                mPager.setCurrentItem(j);
+                    mPager.setCurrentItem(j);
 
+                }
             }
+        }catch(Exception e){
+
         }
 
     }
