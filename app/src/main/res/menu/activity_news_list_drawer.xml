@@ -47,7 +47,7 @@
     </item>
 
 
-    <item android:title="About us">
+    <item android:title="About us - Crafty Studio">
         <menu>
             <item
                 android:id="@+id/nav_visit_us"

@@ -218,11 +218,17 @@ public class NewsList extends AppCompatActivity
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
-            } else {
+            } if(mPager == null){
+                super.onBackPressed();
+
+            }
+            else {
                 super.onBackPressed();
             }
         }catch(Exception e){
-            
+
+
+            e.printStackTrace();
         }
     }
 
@@ -298,7 +304,7 @@ public class NewsList extends AppCompatActivity
 
         Intent intent = new Intent(Intent.ACTION_SEND);
 
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"appforyou@yahoo.com"});
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"acraftystudio@gmail.com"});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Suggestion for ASAP News App");
         intent.putExtra(Intent.EXTRA_TEXT, "Your suggestion here for News app \n");
 
