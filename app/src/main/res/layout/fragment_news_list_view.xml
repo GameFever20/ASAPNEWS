@@ -10,5 +10,6 @@
         android:layout_height="match_parent"
         android:id="@+id/fragment_news_list_textview"
         android:text="@string/hello_blank_fragment"/>
+    <!--Not used -->
 
 </FrameLayout>
